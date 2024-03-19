@@ -1,8 +1,10 @@
 package ubp.com.tdone.ui
 
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
@@ -28,10 +30,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        /*
-        #####DRAWER Layout#####
-         */
+        // Set up the toolbar
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.title=""
 
+        // Set up the hamburger menu button
+        val hamburgerMenuButton = binding.toolbar.findViewById<ImageButton>(R.id.hamburgerMenuButton)
+        hamburgerMenuButton.setOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.START)
+        }
     }
 
 
