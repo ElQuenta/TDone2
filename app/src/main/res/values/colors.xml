@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Selection -->
+    <color name="selected_transparent">#A1AB47BC</color>
+
+    <!-- Colores Textos -->
+    <color name="color_text1">#000000</color>
+    <!-- Colores items -->
+
+    <color name="background_task_non_selected">#D1C4E9</color>
+    <color name="background_task_selected">#7986CB</color>
+    <color name="checkbox_task">#FF3700B3</color>
+
+    <!-- Colores de Fondo de las Notas -->
+    <color name="note_background_1">#FFFFFFFF</color>
+    <color name="note_background_2">#FF9E80</color>
+    <color name="note_background_3">#FFD180</color>
+    <color name="note_background_4">#FFE57F</color>
+    <color name="note_background_5">#CCFF90</color>
+    <color name="note_background_6">#B9F6CA</color>
+    <color name="note_background_7">#84FFFF</color>
+    <color name="note_background_8">#82B1FF</color>
+    <color name="note_background_9">#8C9EFF</color>
+    <color name="note_background_10">#B388FF</color>
+    <color name="note_background_11">#FF80AB</color>
+    <color name="note_background_12">#FF8A80</color>
+    <!-- Colores Tags -->
+    <color name="color_tag_1">#E53935</color>
+    <color name="color_tag_2">#D81B60</color>
+    <color name="color_tag_3">#8E24AA</color>
+    <color name="color_tag_4">#3949AB</color>
+    <color name="color_tag_5">#1E88E5</color>
+    <color name="color_tag_6">#00897B</color>
+    <color name="color_tag_7">#43A047</color>
+    <color name="color_tag_8">#7CB342</color>
+    <color name="color_tag_9">#C0CA33</color>
+    <color name="color_tag_10">#FFB300</color>
+    <color name="color_tag_11">#FB8C00</color>
+    <color name="color_tag_12">#F4511E</color>
+
+</resources>

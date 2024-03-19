@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment"
+    android:layout_margin="16dp">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_notes"
+                style="@style/Title_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tareas" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_current_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/tv_Tasks"
+                style="@style/Title_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notas" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_near_to_end_tasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <View
+                android:id="@+id/transparent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#66000000"
+                android:visibility="invisible" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
