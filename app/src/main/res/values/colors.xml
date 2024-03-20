@@ -5,14 +5,14 @@
 
     <!-- Selection -->
     <color name="selected_transparent">#A1AB47BC</color>
-
+    <color name="item_non_selected_background">#D1C4E9</color>
+    <color name="item_selected_background">#7986CB</color>
     <!-- Colores Textos -->
     <color name="color_text1">#000000</color>
     <!-- Colores items -->
-
-    <color name="background_task_non_selected">#D1C4E9</color>
-    <color name="background_task_selected">#7986CB</color>
     <color name="checkbox_task">#FF3700B3</color>
+
+    <color name="btn_sign">#7C4DFF</color>
 
     <!-- Colores de Fondo de las Notas -->
     <color name="note_background_1">#FFFFFFFF</color>

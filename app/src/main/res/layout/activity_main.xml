@@ -20,7 +20,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
-                android:background="@color/background_task_non_selected"
+                android:background="@color/item_non_selected_background"
                 android:theme="?attr/actionBarTheme"
                 app:navigationIcon="@drawable/ic_nav">
 

@@ -1,4 +1,4 @@
-package ubp.com.tdone.ui.allNotes
+package ubp.com.tdone.ui.menuFragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
