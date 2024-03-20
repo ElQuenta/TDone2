@@ -1,4 +1,4 @@
-package ubp.com.tdone.ui.signFragments
+package ubp.com.tdone.views.signFragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

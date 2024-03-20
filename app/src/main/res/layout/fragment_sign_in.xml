@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/item_non_selected_background"
-    tools:context=".ui.signFragments.SignInFragment">
+    tools:context=".views.signFragments.SignInFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_container"

@@ -1,10 +1,10 @@
-package ubp.com.tdone.ui.recyclerViews.showingElements
+package ubp.com.tdone.views.recyclerViews.showingElements
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ubp.com.tdone.R
-import ubp.com.tdone.dataBase.dataclases.Note
+import ubp.com.tdone.model.dataclases.Note
 
 class NotesAdapter(private var noteList: List<Note>) : RecyclerView.Adapter<NotesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {

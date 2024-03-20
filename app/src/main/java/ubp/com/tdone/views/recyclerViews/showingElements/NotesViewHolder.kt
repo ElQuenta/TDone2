@@ -1,10 +1,10 @@
-package ubp.com.tdone.ui.recyclerViews.showingElements
+package ubp.com.tdone.views.recyclerViews.showingElements
 
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import ubp.com.tdone.business.adaptToScreen
-import ubp.com.tdone.dataBase.dataclases.Note
+import ubp.com.tdone.controller.adaptToScreen
+import ubp.com.tdone.model.dataclases.Note
 import ubp.com.tdone.databinding.ItemNoteBinding
 
 class NotesViewHolder(view: View) : RecyclerView.ViewHolder(view) {

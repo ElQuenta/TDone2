@@ -1,11 +1,11 @@
-package ubp.com.tdone.dataBase
+package ubp.com.tdone.model
 
 import com.google.firebase.Timestamp
 import ubp.com.tdone.R
-import ubp.com.tdone.dataBase.dataclases.Cover
-import ubp.com.tdone.dataBase.dataclases.Note
-import ubp.com.tdone.dataBase.dataclases.Tag
-import ubp.com.tdone.dataBase.dataclases.Task
+import ubp.com.tdone.model.dataclases.Cover
+import ubp.com.tdone.model.dataclases.Note
+import ubp.com.tdone.model.dataclases.Tag
+import ubp.com.tdone.model.dataclases.Task
 import java.util.GregorianCalendar
 
 public val noteListExample: List<Note>

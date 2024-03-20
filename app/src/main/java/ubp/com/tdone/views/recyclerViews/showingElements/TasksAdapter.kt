@@ -1,10 +1,10 @@
-package ubp.com.tdone.ui.recyclerViews.showingElements
+package ubp.com.tdone.views.recyclerViews.showingElements
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ubp.com.tdone.R
-import ubp.com.tdone.dataBase.dataclases.Task
+import ubp.com.tdone.model.dataclases.Task
 
 class TasksAdapter(private var taskList: List<Task>) : RecyclerView.Adapter<TasksViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TasksViewHolder {

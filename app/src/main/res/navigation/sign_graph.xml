@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/initialFragment"
-        android:name="ubp.com.tdone.ui.signFragments.InitialFragment"
+        android:name="ubp.com.tdone.views.signFragments.InitialFragment"
         android:label="fragment_initial"
         tools:layout="@layout/fragment_initial" >
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
-        android:name="ubp.com.tdone.ui.signFragments.SignInFragment"
+        android:name="ubp.com.tdone.views.signFragments.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/singUpFragment"
-        android:name="ubp.com.tdone.ui.signFragments.SingUpFragment"
+        android:name="ubp.com.tdone.views.signFragments.SingUpFragment"
         android:label="fragment_sing_up"
         tools:layout="@layout/fragment_sign_up" >
         <action

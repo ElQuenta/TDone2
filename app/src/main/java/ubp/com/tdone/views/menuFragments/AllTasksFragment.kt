@@ -1,4 +1,4 @@
-package ubp.com.tdone.ui.menuFragments
+package ubp.com.tdone.views.menuFragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import ubp.com.tdone.dataBase.taskListExample
+import ubp.com.tdone.model.taskListExample
 import ubp.com.tdone.databinding.FragmentAllTasksBinding
-import ubp.com.tdone.ui.recyclerViews.showingElements.TasksAdapter
+import ubp.com.tdone.views.recyclerViews.showingElements.TasksAdapter
 
 class AllTasksFragment : Fragment() {
 

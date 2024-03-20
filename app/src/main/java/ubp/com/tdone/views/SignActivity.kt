@@ -1,4 +1,4 @@
-package ubp.com.tdone.ui
+package ubp.com.tdone.views
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

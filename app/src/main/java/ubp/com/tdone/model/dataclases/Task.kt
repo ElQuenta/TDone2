@@ -1,4 +1,4 @@
-package ubp.com.tdone.dataBase.dataclases
+package ubp.com.tdone.model.dataclases
 
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentId

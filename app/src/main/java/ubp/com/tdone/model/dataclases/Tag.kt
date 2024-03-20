@@ -1,4 +1,4 @@
-package ubp.com.tdone.dataBase.dataclases
+package ubp.com.tdone.model.dataclases
 
 data class Tag(
     val name: String,

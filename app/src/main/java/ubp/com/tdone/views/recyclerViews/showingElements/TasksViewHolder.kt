@@ -1,10 +1,10 @@
-package ubp.com.tdone.ui.recyclerViews.showingElements
+package ubp.com.tdone.views.recyclerViews.showingElements
 
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import ubp.com.tdone.dataBase.dataclases.Tag
-import ubp.com.tdone.dataBase.dataclases.Task
+import ubp.com.tdone.model.dataclases.Tag
+import ubp.com.tdone.model.dataclases.Task
 import ubp.com.tdone.databinding.ItemTaskBinding
 
 class TasksViewHolder(view: View) : RecyclerView.ViewHolder(view) {

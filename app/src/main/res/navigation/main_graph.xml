@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/allNotesFragment"
-        android:name="ubp.com.tdone.ui.menuFragments.AllNotesFragment"
+        android:name="ubp.com.tdone.views.menuFragments.AllNotesFragment"
         android:label="fragment_all_notes"
         tools:layout="@layout/fragment_all_notes" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="ubp.com.tdone.ui.menuFragments.HomeFragment"
+        android:name="ubp.com.tdone.views.menuFragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/allTasksFragment"
-        android:name="ubp.com.tdone.ui.menuFragments.AllTasksFragment"
+        android:name="ubp.com.tdone.views.menuFragments.AllTasksFragment"
         android:label="fragment_all_tasks"
         tools:layout="@layout/fragment_all_tasks" >
         <action
