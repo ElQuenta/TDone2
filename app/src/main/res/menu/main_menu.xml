@@ -3,13 +3,16 @@
     <group>
         <item
             android:id="@+id/homeFragment"
-            android:title="Inicio" />
+            android:title="Inicio"
+            android:icon="@drawable/ic_home"/>
         <item
             android:id="@+id/allTasksFragment"
-            android:title="Tareas" />
+            android:title="Tareas"
+            android:icon="@drawable/ic_task"/>
         <item
             android:id="@+id/allNotesFragment"
-            android:title="Notas" />
+            android:title="Notas"
+            android:icon="@drawable/ic_note"/>
     </group>
 
 </menu>
