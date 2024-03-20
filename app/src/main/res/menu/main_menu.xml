@@ -12,26 +12,4 @@
             android:title="Notas" />
     </group>
 
-    <item android:title="Idioma">
-        <menu>
-            <group>
-                <item
-                    android:id="@+id/language_es"
-                    android:title="Español" />
-                <item
-                    android:id="@+id/language_en"
-                    android:title="Inglés" />
-            </group>
-        </menu>
-    </item>
-    <item android:title="Perfil">
-        <menu>
-            <group>
-                <item
-                    android:id="@+id/log_out"
-                    android:title="cerrar sesión" />
-            </group>
-        </menu>
-    </item>
-
 </menu>
