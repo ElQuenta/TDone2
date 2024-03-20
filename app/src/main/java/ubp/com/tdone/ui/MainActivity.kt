@@ -1,6 +1,7 @@
 package ubp.com.tdone.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -36,6 +37,36 @@ class MainActivity : AppCompatActivity() {
     private fun initListeners() {
         binding.toolbar.setNavigationOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
+        }
+        binding.navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.log_out -> {
+                    // Handle log out action
+                    Toast.makeText(this, "cerrando sesion", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> {
+                    val language: String? = when (menuItem.itemId) {
+                        R.id.language_es -> {
+                            // Handle Spanish language
+                            "español"
+                        }
+                        R.id.language_en -> {
+                            // Handle English language
+                            "en"
+                        }
+                        else -> {
+                            null
+                        }
+                    }
+                    if (language != null) {
+                        Toast.makeText(this, "el lengauje es $language", Toast.LENGTH_SHORT).show()
+                    }
+                    // Close the navigation drawer
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    true
+                }
+            }
         }
     }
 
