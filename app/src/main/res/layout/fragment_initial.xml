@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/item_non_selected_background"
     tools:context=".views.signFragments.InitialFragment">
 
     <TextView
@@ -15,7 +14,8 @@
         app:layout_constraintBottom_toTopOf="@id/cv_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="32dp"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_container"

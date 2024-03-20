@@ -1,5 +1,6 @@
 package ubp.com.tdone.views.signFragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import ubp.com.tdone.R
 import ubp.com.tdone.databinding.FragmentSignUpBinding
+import ubp.com.tdone.views.MainActivity
 
 class SingUpFragment : Fragment() {
 
@@ -30,6 +32,14 @@ class SingUpFragment : Fragment() {
         binding.tvSignIn.setOnClickListener {
             findNavController().navigate(R.id.action_singUpFragment_to_signInFragment)
         }
+        binding.btnSingUp.setOnClickListener{
+            navToHome()
+        }
+    }
+
+    private fun navToHome(){
+        val intent = Intent(context, MainActivity::class.java)
+        startActivity(intent)
     }
 
 }
