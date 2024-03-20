@@ -1,22 +1,24 @@
 package ubp.com.tdone.ui
 
-import android.graphics.Rect
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ubp.com.tdone.R
 import ubp.com.tdone.databinding.ActivityMainBinding
 
@@ -82,27 +84,43 @@ class MainActivity : AppCompatActivity() {
      */
     private fun showFabs() {
         binding.fabAdd.animate().rotationBy(45f)
+        animateFabVisibility(binding.fabAddNote, true)
+        animateFabVisibility(binding.fabAddTask, true)
         mainHandler.postDelayed(
             {
-                binding.fabAddNote.visibility = View.VISIBLE
-                binding.fabAddTask.visibility = View.VISIBLE
                 binding.containerLayout.visibility = View.VISIBLE
-            },
-            200
+            }, 200
         )
 
     }
 
     private fun hideFabs() {
         binding.fabAdd.animate().rotation(0f)
+        animateFabVisibility(binding.fabAddNote, false)
+        animateFabVisibility(binding.fabAddTask, false)
         mainHandler.postDelayed(
             {
-                binding.fabAddTask.visibility = View.GONE
-                binding.fabAddNote.visibility = View.GONE
                 binding.containerLayout.visibility = View.GONE
-            },
-            200
+            }, 200
         )
 
+    }
+
+    fun animateFabVisibility(fab: FloatingActionButton, visible: Boolean) {
+        val animator = ValueAnimator.ofFloat(if (visible) 0f else 1f, if (visible) 1f else 0f)
+        animator.duration = 200L // Set the duration of the animation
+        animator.interpolator = AccelerateDecelerateInterpolator() // Set the interpolator
+
+        animator.addUpdateListener { animation ->
+            fab.alpha = animation.animatedValue as Float
+        }
+
+        animator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                fab.visibility = if (visible) View.VISIBLE else View.GONE
+            }
+        })
+
+        animator.start()
     }
 }
