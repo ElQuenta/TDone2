@@ -2,17 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/homeFragment"
             android:title="Inicio" />
         <item
-            android:id="@+id/nav_tasks"
+            android:id="@+id/allTasksFragment"
             android:title="Tareas" />
         <item
-            android:id="@+id/nav_notes"
+            android:id="@+id/allNotesFragment"
             android:title="Notas" />
-        <item
-            android:title=""
-            android:visible="false" />
     </group>
     <group>
         <item

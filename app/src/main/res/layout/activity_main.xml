@@ -17,15 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background_task_non_selected"
-            android:theme="?attr/actionBarTheme">
-
-            <!-- Add this ImageButton for the hamburger menu -->
-            <ImageButton
-                android:id="@+id/hamburgerMenuButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_nav"
-                android:background="@null"/>
+            android:theme="?attr/actionBarTheme"
+            app:navigationIcon="@drawable/ic_nav">
 
         </androidx.appcompat.widget.Toolbar>
 

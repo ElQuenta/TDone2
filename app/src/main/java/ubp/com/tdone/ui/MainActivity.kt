@@ -1,13 +1,14 @@
 package ubp.com.tdone.ui
 
 import android.os.Bundle
-import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.findNavController
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import ubp.com.tdone.R
 import ubp.com.tdone.databinding.ActivityMainBinding
@@ -15,6 +16,8 @@ import ubp.com.tdone.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,19 +30,23 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         initUI()
+        initListeners()
     }
 
-    private fun initUI() {
-        // Set up the toolbar
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.title=""
-
-        // Set up the hamburger menu button
-        val hamburgerMenuButton = binding.toolbar.findViewById<ImageButton>(R.id.hamburgerMenuButton)
-        hamburgerMenuButton.setOnClickListener {
+    private fun initListeners() {
+        binding.toolbar.setNavigationOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
     }
 
+    private fun initUI() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        navController = navHostFragment.findNavController()
 
+
+        // Habilita la navegación mediante el NavController en el menú hamburguesa
+        binding.navView.setupWithNavController(navController)
+
+    }
 }
