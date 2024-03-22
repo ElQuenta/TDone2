@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import ubp.com.tdone.controller.NavTaskDetailCommand
+import ubp.com.tdone.controller.Navigator
 import ubp.com.tdone.model.taskListExample
 import ubp.com.tdone.databinding.FragmentAllTasksBinding
+import ubp.com.tdone.model.dataclases.Task
 import ubp.com.tdone.views.recyclerViews.showingElements.TasksAdapter
 
 class AllTasksFragment : Fragment() {
@@ -29,10 +32,16 @@ class AllTasksFragment : Fragment() {
     }
 
     private fun initUI() {
-        allTasksAdapter = TasksAdapter(taskListExample)
+        allTasksAdapter = TasksAdapter(taskListExample){
+            navToTaskDetail(it)
+        }
         binding.rvAllTasks.apply {
             layoutManager = LinearLayoutManager(binding.root.context)
             adapter = allTasksAdapter
         }
+    }
+
+    private fun navToTaskDetail(task: Task) {
+        startActivity(NavTaskDetailCommand(task, Navigator(binding.root.context)).execute())
     }
 }

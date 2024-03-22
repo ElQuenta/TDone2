@@ -11,7 +11,7 @@ class TasksViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val binding = ItemTaskBinding.bind(view)
 
-    fun bind(task: Task) {
+    fun bind(task: Task, nav: (Task) -> Unit) {
         binding.tvTaskTittle.text = task.title
         binding.tvTaskEndDate.text = task.endDate.toString()
         var position = 1
@@ -20,7 +20,9 @@ class TasksViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             position++
         }
 
-
+        binding.root.setOnClickListener {
+            nav(task)
+        }
         binding.cbTask.isChecked = task.finished
     }
 

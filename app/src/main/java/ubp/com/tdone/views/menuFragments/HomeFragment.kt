@@ -6,9 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import ubp.com.tdone.controller.NavNoteDetailCommand
+import ubp.com.tdone.controller.NavTaskDetailCommand
+import ubp.com.tdone.controller.Navigator
+import ubp.com.tdone.databinding.FragmentHomeBinding
+import ubp.com.tdone.model.dataclases.Note
+import ubp.com.tdone.model.dataclases.Task
 import ubp.com.tdone.model.noteListExample
 import ubp.com.tdone.model.taskListExample
-import ubp.com.tdone.databinding.FragmentHomeBinding
 import ubp.com.tdone.views.recyclerViews.showingElements.NotesAdapter
 import ubp.com.tdone.views.recyclerViews.showingElements.TasksAdapter
 
@@ -32,19 +37,31 @@ class HomeFragment : Fragment() {
     }
 
     private fun initUI() {
-        notesAdapter = NotesAdapter(noteListExample.take(4))
+        notesAdapter = NotesAdapter(noteListExample.take(4)) {
+            navToNoteDetail(it)
+        }
         binding.rvCurrentNotes.apply {
             layoutManager =
                 LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
             adapter = notesAdapter
         }
 
-        tasksAdapter = TasksAdapter(taskListExample)
+        tasksAdapter = TasksAdapter(taskListExample) {
+            navToTaskDetail(it)
+        }
         binding.rvNearToEndTasks.apply {
             layoutManager =
                 LinearLayoutManager(binding.root.context)
             adapter = tasksAdapter
         }
+    }
+
+    private fun navToNoteDetail(note: Note) {
+        startActivity(NavNoteDetailCommand(note, Navigator(binding.root.context)).execute())
+    }
+
+    private fun navToTaskDetail(task: Task) {
+        startActivity(NavTaskDetailCommand(task, Navigator(binding.root.context)).execute())
     }
 
 }

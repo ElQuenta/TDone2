@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import ubp.com.tdone.R
 import ubp.com.tdone.model.dataclases.Note
 
-class NotesAdapter(private var noteList: List<Note>) : RecyclerView.Adapter<NotesViewHolder>() {
+class NotesAdapter(private var noteList: List<Note>, private val nav: (Note) -> Unit) :
+    RecyclerView.Adapter<NotesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         return NotesViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
@@ -16,6 +17,6 @@ class NotesAdapter(private var noteList: List<Note>) : RecyclerView.Adapter<Note
     override fun getItemCount(): Int = noteList.size
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
-        holder.bind(noteList[position])
+        holder.bind(noteList[position],nav)
     }
 }

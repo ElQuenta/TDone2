@@ -3,6 +3,7 @@ package ubp.com.tdone.views
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -31,6 +32,11 @@ class MainActivity : AppCompatActivity() {
 
     private var showingFabs = false
 
+    companion object {
+        const val KEY_TASK = "key_task"
+        const val KEY_NOTE = "key_note"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -45,9 +51,21 @@ class MainActivity : AppCompatActivity() {
         initListeners()
     }
 
+    @SuppressLint("RestrictedApi")
+    override fun onBackPressed() {
+        val currentDestination = navController.currentDestination
+        val homeDestination = navController.findDestination(R.id.homeFragment)
+        if (currentDestination != null && currentDestination == homeDestination) {
+            finishAffinity()
+        } else {
+            hideFabs()
+            super.onBackPressed()
+        }
+    }
+
+
     private fun initListeners() {
         binding.toolbar.setNavigationOnClickListener {
-            hideFabs()
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
         binding.fabAdd.setOnClickListener {

@@ -13,6 +13,9 @@ public val noteListExample: List<Note>
         Note(
             id = "nota1",
             title = "nota 1",
+            body = "Finalizar el informe de ventas para el trimestre.\n" +
+                    "Preparar la presentación para la reunión del cliente el viernes.\n" +
+                    "Programar una llamada de seguimiento con el equipo de desarrollo para discutir los problemas de rendimiento.",
             createdAt = Timestamp.now(),
             updatedAt = Timestamp.now(),
             cover = coverListExample[0],
@@ -21,6 +24,9 @@ public val noteListExample: List<Note>
         Note(
             id = "nota2",
             title = "nota 2",
+            body = "Finalizar el informe de ventas para el trimestre.\n" +
+                    "Preparar la presentación para la reunión del cliente el viernes.\n" +
+                    "Programar una llamada de seguimiento con el equipo de desarrollo para discutir los problemas de rendimiento.",
             createdAt = Timestamp.now(),
             updatedAt = Timestamp.now(),
             tags = listOf(
@@ -31,6 +37,7 @@ public val noteListExample: List<Note>
         Note(
             id = "nota3",
             title = "nota 3",
+            body = "Durante la sesión de lluvia de ideas, se propusieron varias ideas creativas para mejorar la experiencia del usuario en nuestra aplicación móvil. Algunos de los conceptos incluyen la implementación de un nuevo sistema de navegación y la introducción de características de gamificación para aumentar la participación del usuario.",
             createdAt = Timestamp.now(),
             updatedAt = Timestamp.now(),
             tags = listOf(
@@ -42,6 +49,9 @@ public val noteListExample: List<Note>
         Note(
             id = "nota4",
             title = "nota 4",
+            body = "Discutimos los requisitos del proyecto y confirmamos los plazos.\n" +
+                    "Se acordaron las próximas etapas y se asignaron responsabilidades.\n" +
+                    "Se programó una reunión de seguimiento para revisar el progreso.",
             createdAt = Timestamp.now(),
             updatedAt = Timestamp.now(),
             cover = coverListExample[1],
@@ -50,6 +60,7 @@ public val noteListExample: List<Note>
         Note(
             id = "nota5",
             title = "nota 5",
+            body = "Durante la revisión de rendimiento trimestral, se identificaron áreas de mejora para el equipo de ventas, como la necesidad de mejorar la tasa de conversión y la calidad de las interacciones con los clientes. Se acordó proporcionar capacitación adicional y establecer metas claras para el próximo trimestre.",
             createdAt = Timestamp.now(),
             updatedAt = Timestamp.now(),
             tags = listOf(
@@ -61,6 +72,11 @@ public val noteListExample: List<Note>
         Note(
             id = "nota6",
             title = "nota 6",
+            body = "Resumen de la llamada con el cliente:\n" +
+                    "\n" +
+                    "Discutimos los requisitos del proyecto y confirmamos los plazos.\n" +
+                    "Se acordaron las próximas etapas y se asignaron responsabilidades.\n" +
+                    "Se programó una reunión de seguimiento para revisar el progreso.",
             createdAt = Timestamp.now(),
             updatedAt = Timestamp.now(),
             tags = listOf(
@@ -72,6 +88,11 @@ public val noteListExample: List<Note>
         Note(
             id = "nota7",
             title = "nota 7",
+            body = "Acciones a seguir:\n" +
+                    "\n" +
+                    "Investigar soluciones alternativas para el problema de rendimiento del servidor.\n" +
+                    "Coordinar con el equipo de marketing para desarrollar una estrategia de lanzamiento.\n" +
+                    "Programar una demostración del producto para el equipo ejecutivo la próxima semana.",
             createdAt = Timestamp.now(),
             updatedAt = Timestamp.now(),
             tags = listOf(
@@ -83,6 +104,7 @@ public val noteListExample: List<Note>
         Note(
             id = "nota8",
             title = "nota 8",
+            body = "El cliente expresó su satisfacción con la implementación de las nuevas características en la aplicación y sugirió algunas mejoras adicionales, como la integración con plataformas de redes sociales y la optimización del rendimiento. Se comprometió a seguir proporcionando comentarios para ayudar a mejorar aún más el producto.",
             createdAt = Timestamp.now(),
             updatedAt = Timestamp.now(),
             cover = coverListExample[0],
@@ -115,7 +137,7 @@ public val taskListExample: List<Task>
                 tagListExample[1],
                 tagListExample[2],
 
-            )
+                )
         ),
         Task(
             id = "tarea_3",
@@ -126,7 +148,7 @@ public val taskListExample: List<Task>
                 tagListExample[0],
                 tagListExample[3],
 
-            )
+                )
         ),
         Task(
             id = "tarea_4",
