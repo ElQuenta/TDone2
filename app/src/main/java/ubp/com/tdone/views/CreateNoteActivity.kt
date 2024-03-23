@@ -1,0 +1,150 @@
+package ubp.com.tdone.views
+
+import android.annotation.SuppressLint
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import ubp.com.tdone.R
+import ubp.com.tdone.controller.mediators.CreateNotesMediator
+import ubp.com.tdone.databinding.ActivityCreateNoteBinding
+import ubp.com.tdone.model.dataclases.Cover
+import ubp.com.tdone.model.dataclases.Tag
+
+class CreateNoteActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityCreateNoteBinding
+
+    private lateinit var navController: NavController
+
+    private val mediator = CreateNotesMediator
+
+    private val colorList = listOf<Int>(
+        R.color.note_background_1,
+        R.color.note_background_2,
+        R.color.note_background_3,
+        R.color.note_background_4,
+        R.color.note_background_5,
+        R.color.note_background_6,
+        R.color.note_background_7,
+        R.color.note_background_8,
+        R.color.note_background_9,
+        R.color.note_background_10,
+        R.color.note_background_11,
+        R.color.note_background_12
+    )
+
+    private var noteBackground: Int = R.color.note_background_1
+    private var currentTags: MutableList<Tag> = mutableListOf()
+    private var currentCover: Cover? = null
+    private var showingFragments = false
+    private var fristTime = true
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityCreateNoteBinding.inflate(layoutInflater)
+        enableEdgeToEdge()
+        setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+        initUI()
+        initListeners()
+    }
+
+    private fun initListeners() {
+        binding.toolbar.setNavigationOnClickListener {
+            this.finish()
+        }
+        binding.efabAddCover.setOnClickListener {
+            changeCurrentFragment(R.id.selectCoverFragment)
+        }
+        binding.efabAddTag.setOnClickListener {
+            changeCurrentFragment(R.id.selectTagsFragment)
+        }
+        binding.efabAddBackgroundColor.setOnClickListener {
+            if (fristTime) {
+                mediator.setColorList(colorList)
+                fristTime=false
+            }
+            changeCurrentFragment(R.id.selectColorFragment)
+        }
+    }
+
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
+        if (showingFragments){
+            binding.navHostFragment.visibility = View.GONE
+            showingFragments= false
+        }else {
+            this.finish()
+        }
+    }
+
+    private fun initUI() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        navController = navHostFragment.findNavController()
+
+        mediator.setActivity(this)
+        printCover()
+    }
+
+    private fun printCover() {
+        if (currentCover != null) {
+            binding.ivFrontNote.visibility = View.VISIBLE
+            if (currentCover!!.srcImage && currentCover!!.src != null) {
+                currentCover!!.src?.let { binding.ivFrontNote.setImageResource(it) }
+            } else if (currentCover!!.uri != null) {
+                currentCover!!.uri?.let { binding.ivFrontNote.setImageURI(it) }
+            }
+        } else {
+            binding.ivFrontNote.visibility = View.GONE
+        }
+    }
+
+    fun updateBackground(color: Int) {
+        noteBackground = color
+        binding.root.setBackgroundColor(ContextCompat.getColor(this, color))
+    }
+
+    fun updateTagList(tagList: MutableList<Tag>) {
+        currentTags = tagList
+    }
+
+    fun updateCover(cover: Cover) {
+        currentCover = cover
+        printCover()
+    }
+
+    private fun isOnTheSameFragment(fragmentID: Int): Boolean {
+        val currentDestination = navController.currentDestination
+        val fragmentDestination = navController.graph.findNode(fragmentID)
+        return currentDestination != null && currentDestination.id == fragmentDestination?.id
+    }
+
+    private fun changeCurrentFragment(fragmentID: Int){
+        if (!showingFragments && isOnTheSameFragment(fragmentID)) {
+            showingFragments=true
+            binding.navHostFragment.visibility = View.VISIBLE
+        } else if (showingFragments && isOnTheSameFragment(fragmentID)) {
+            showingFragments=false
+            binding.navHostFragment.visibility = View.GONE
+        } else {
+            showingFragments=true
+            navController.navigate(fragmentID)
+            binding.navHostFragment.visibility = View.VISIBLE
+        }
+    }
+
+
+}

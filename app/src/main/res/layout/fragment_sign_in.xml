@@ -10,7 +10,7 @@
     app:cardCornerRadius="16dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:context=".views.signFragments.SignInFragment">
+    tools:context=".views.fragments.signFragments.SignInFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

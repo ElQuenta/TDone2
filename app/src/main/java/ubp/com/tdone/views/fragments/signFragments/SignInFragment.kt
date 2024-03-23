@@ -1,4 +1,4 @@
-package ubp.com.tdone.views.signFragments
+package ubp.com.tdone.views.fragments.signFragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,18 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import ubp.com.tdone.R
-import ubp.com.tdone.databinding.FragmentSignUpBinding
+import ubp.com.tdone.databinding.FragmentSignInBinding
 import ubp.com.tdone.views.MainActivity
 
-class SingUpFragment : Fragment() {
 
-    private lateinit var binding: FragmentSignUpBinding
+class SignInFragment : Fragment() {
+
+    private lateinit var binding: FragmentSignInBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSignUpBinding.inflate(inflater,container,false)
+        binding = FragmentSignInBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -29,10 +30,10 @@ class SingUpFragment : Fragment() {
     }
 
     private fun initListeners() {
-        binding.tvSignIn.setOnClickListener {
-            findNavController().navigate(R.id.action_singUpFragment_to_signInFragment)
+        binding.tvSignUp.setOnClickListener {
+            findNavController().navigate(R.id.action_signInFragment_to_singUpFragment)
         }
-        binding.btnSingUp.setOnClickListener{
+        binding.btnSingIn.setOnClickListener{
             navToHome()
         }
     }
@@ -41,5 +42,4 @@ class SingUpFragment : Fragment() {
         val intent = Intent(context, MainActivity::class.java)
         startActivity(intent)
     }
-
 }

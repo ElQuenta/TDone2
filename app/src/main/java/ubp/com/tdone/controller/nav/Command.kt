@@ -1,4 +1,4 @@
-package ubp.com.tdone.controller
+package ubp.com.tdone.controller.nav
 
 import android.content.Intent
 

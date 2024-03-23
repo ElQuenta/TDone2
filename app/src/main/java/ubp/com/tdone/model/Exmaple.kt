@@ -191,11 +191,11 @@ public val taskListExample: List<Task>
 
         )
 
-private val tagListExample: List<Tag> = listOf(
-    Tag(name = "Importante", color = R.color.color_tag_1),
-    Tag(name = "Urgente", color = R.color.color_tag_2),
-    Tag(name = "Meh", color = R.color.color_tag_3),
-    Tag(name = "Trivial", color = R.color.color_tag_4),
+val tagListExample: List<Tag> = listOf(
+    Tag(id="tag1",name = "Importante", color = R.color.color_tag_1),
+    Tag(id="tag2",name = "Urgente", color = R.color.color_tag_2),
+    Tag(id="tag3",name = "Meh", color = R.color.color_tag_3),
+    Tag(id="tag4",name = "Trivial", color = R.color.color_tag_4),
 )
 
 private val coverListExample: List<Cover> = listOf(

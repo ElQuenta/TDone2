@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -78,6 +79,8 @@ class MainActivity : AppCompatActivity() {
         }
         binding.fabAddNote.setOnClickListener {
             Toast.makeText(this, "nueva nota", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this,CreateNoteActivity::class.java)
+            startActivity(intent)
         }
         binding.fabAddTask.setOnClickListener {
             Toast.makeText(this, "nueva tarea", Toast.LENGTH_SHORT).show()

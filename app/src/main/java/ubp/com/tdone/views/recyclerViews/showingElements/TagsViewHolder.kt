@@ -3,7 +3,6 @@ package ubp.com.tdone.views.recyclerViews.showingElements
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import ubp.com.tdone.databinding.ItemTagBinding
 import ubp.com.tdone.databinding.ItemTagCompleteBinding
 import ubp.com.tdone.model.dataclases.Tag
 

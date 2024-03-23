@@ -8,8 +8,8 @@ private fun getScreenWidthPixels(): Int {
     return displayMetrics.widthPixels
 }
 
-private fun pixelsToDp(pixels: Int, displayMetrics: DisplayMetrics): Int {
-    return (pixels / displayMetrics.density).toInt()
+fun dpToPixel(dp: Int): Int {
+    return (dp * Resources.getSystem().displayMetrics.density).toInt()
 }
 
 fun adaptToScreen(percentage: Double) = (getScreenWidthPixels() * percentage).toInt()

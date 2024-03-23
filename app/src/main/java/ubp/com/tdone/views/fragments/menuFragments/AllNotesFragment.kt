@@ -1,4 +1,4 @@
-package ubp.com.tdone.views.menuFragments
+package ubp.com.tdone.views.fragments.menuFragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import ubp.com.tdone.controller.NavNoteDetailCommand
-import ubp.com.tdone.controller.Navigator
+import ubp.com.tdone.controller.nav.NavNoteDetailCommand
+import ubp.com.tdone.controller.nav.Navigator
 import ubp.com.tdone.model.noteListExample
 import ubp.com.tdone.databinding.FragmentAllNotesBinding
 import ubp.com.tdone.model.dataclases.Note

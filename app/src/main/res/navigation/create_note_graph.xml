@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_note_graph"
+    app:startDestination="@id/selectTagsFragment">
+
+    <fragment
+        android:id="@+id/selectCoverFragment"
+        android:name="ubp.com.tdone.views.fragments.creationItemFragments.SelectCoverFragment"
+        android:label="fragment_select_cover"
+        tools:layout="@layout/fragment_select_cover" >
+        <action
+            android:id="@+id/action_selectCoverFragment_to_selectColorFragment"
+            app:destination="@id/selectColorFragment" />
+        <action
+            android:id="@+id/action_selectCoverFragment_to_selectTagsFragment"
+            app:destination="@id/selectTagsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectColorFragment"
+        android:name="ubp.com.tdone.views.fragments.creationItemFragments.SelectColorFragment"
+        android:label="fragment_select_color"
+        tools:layout="@layout/fragment_select_color" >
+        <action
+            android:id="@+id/action_selectColorFragment_to_selectCoverFragment"
+            app:destination="@id/selectCoverFragment" />
+        <action
+            android:id="@+id/action_selectColorFragment_to_selectTagsFragment"
+            app:destination="@id/selectTagsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectTagsFragment"
+        android:name="ubp.com.tdone.views.fragments.creationItemFragments.SelectTagsFragment"
+        android:label="fragment_select_tags"
+        tools:layout="@layout/fragment_select_tags" >
+        <action
+            android:id="@+id/action_selectTagsFragment_to_selectCoverFragment"
+            app:destination="@id/selectCoverFragment" />
+        <action
+            android:id="@+id/action_selectTagsFragment_to_selectColorFragment"
+            app:destination="@id/selectColorFragment" />
+    </fragment>
+</navigation>
