@@ -12,19 +12,26 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import ubp.com.tdone.R
-import ubp.com.tdone.controller.mediators.CreateNotesMediator
+import ubp.com.tdone.controller.mediators.ColorActivityMediator
+import ubp.com.tdone.controller.mediators.CoverNotesMediator
+import ubp.com.tdone.controller.mediators.TagActivityMediator
 import ubp.com.tdone.databinding.ActivityCreateNoteBinding
 import ubp.com.tdone.model.dataclases.Cover
 import ubp.com.tdone.model.dataclases.Tag
+import ubp.com.tdone.views.recyclerViews.showingElements.TagsAdapter
 
 class CreateNoteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCreateNoteBinding
 
     private lateinit var navController: NavController
+    private lateinit var tagsAdapter: TagsAdapter
 
-    private val mediator = CreateNotesMediator
+    private val mediatorCover = CoverNotesMediator
+    private val mediatorColor = ColorActivityMediator
+    private val mediatorTag = TagActivityMediator
 
     private val colorList = listOf<Int>(
         R.color.note_background_1,
@@ -73,7 +80,7 @@ class CreateNoteActivity : AppCompatActivity() {
         }
         binding.efabAddBackgroundColor.setOnClickListener {
             if (fristTime) {
-                mediator.setColorList(colorList)
+                mediatorColor.initColorList(colorList)
                 fristTime=false
             }
             changeCurrentFragment(R.id.selectColorFragment)
@@ -95,8 +102,17 @@ class CreateNoteActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         navController = navHostFragment.findNavController()
 
-        mediator.setActivity(this)
+        tagsAdapter = TagsAdapter(currentTags)
+        binding.rvSelectedTags.apply {
+            layoutManager = LinearLayoutManager(binding.root.context,LinearLayoutManager.HORIZONTAL,false)
+            adapter = tagsAdapter
+        }
+
+        mediatorColor.setActivity(this,true)
+        mediatorTag.setActivity(this,true)
+        mediatorCover.setActivity(this)
         printCover()
+
     }
 
     private fun printCover() {
@@ -119,9 +135,11 @@ class CreateNoteActivity : AppCompatActivity() {
 
     fun updateTagList(tagList: MutableList<Tag>) {
         currentTags = tagList
+        tagsAdapter.updateTagList(currentTags)
+        tagsAdapter.notifyDataSetChanged()
     }
 
-    fun updateCover(cover: Cover) {
+    fun updateCover(cover: Cover?) {
         currentCover = cover
         printCover()
     }

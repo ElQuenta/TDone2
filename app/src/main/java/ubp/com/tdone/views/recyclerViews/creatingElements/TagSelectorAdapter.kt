@@ -9,7 +9,8 @@ import ubp.com.tdone.model.dataclases.Tag
 class TagSelectorAdapter(
     private val tagList: MutableList<Tag>,
     private val createTag: () -> Unit,
-    private val onPressTag: (Tag, Boolean) -> Unit
+    private val onPressTag: (Tag, Boolean) -> Unit,
+    private val compareTags: (Tag)->Boolean
 ) :
     RecyclerView.Adapter<TagSelectorViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagSelectorViewHolder {
@@ -21,6 +22,6 @@ class TagSelectorAdapter(
     override fun getItemCount(): Int = tagList.size
 
     override fun onBindViewHolder(holder: TagSelectorViewHolder, position: Int) {
-        holder.bind(tagList[position],createTag,onPressTag)
+        holder.bind(tagList[position],createTag,onPressTag,compareTags)
     }
 }

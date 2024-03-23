@@ -18,4 +18,8 @@ class TagsAdapter(private var tagList: List<Tag>): RecyclerView.Adapter<TagsView
     override fun onBindViewHolder(holder: TagsViewHolder, position: Int) {
         holder.bind(tagList[position])
     }
+
+    fun updateTagList(tagList: List<Tag>){
+        this.tagList = tagList
+    }
 }

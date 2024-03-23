@@ -43,6 +43,13 @@
                 android:layout_height="2dp"
                 android:background="@color/black" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_selected_tags"
+                android:layout_marginTop="4dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
             <Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -88,7 +95,9 @@
                 android:id="@+id/et_note_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                android:hint="Descripción"
+                android:textSize="12sp"/>
 
         </LinearLayout>
 

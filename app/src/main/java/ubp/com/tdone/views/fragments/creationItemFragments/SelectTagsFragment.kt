@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import ubp.com.tdone.R
+import ubp.com.tdone.controller.mediators.TagActivityMediator
 import ubp.com.tdone.databinding.FragmentSelectTagsBinding
 import ubp.com.tdone.model.dataclases.Tag
 import ubp.com.tdone.model.tagListExample
@@ -18,9 +19,12 @@ class SelectTagsFragment : Fragment() {
 
     private lateinit var tagSelectorAdapter: TagSelectorAdapter
 
+    private val mediator = TagActivityMediator
+
+
     private var tagList: MutableList<Tag> =
         mutableListOf(Tag(id = NEW_TAG_ID, name = "Crear Tag", color = R.color.black))
-    private val currentTags: MutableList<Tag> = mutableListOf()
+    private var currentTags: MutableList<Tag> = mutableListOf()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
@@ -34,11 +38,13 @@ class SelectTagsFragment : Fragment() {
     }
 
     private fun initUI() {
+        currentTags = mediator.tagList
         tagList = (tagListExample + tagList).toMutableList()
         tagSelectorAdapter = TagSelectorAdapter(
             tagList,
             { createNewTag() },
-            { tag, checked -> updateCurrentTags(tag, checked) })
+            { tag, checked -> updateCurrentTags(tag, checked) },
+            { tag -> currentTags.find { currentTag -> tag == currentTag } != null})
         binding.rvSelectTags.apply {
             layoutManager = LinearLayoutManager(binding.root.context)
             adapter = tagSelectorAdapter
@@ -51,6 +57,7 @@ class SelectTagsFragment : Fragment() {
         } else {
             currentTags.remove(tag)
         }
+        mediator.initTagList(currentTags)
     }
 
     private fun createNewTag() {

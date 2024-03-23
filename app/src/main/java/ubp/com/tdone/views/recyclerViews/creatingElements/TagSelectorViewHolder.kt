@@ -12,7 +12,12 @@ class TagSelectorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val binding = ItemSelectionTagBinding.bind(view)
 
-    fun bind(tag: Tag, createTag: () -> Unit, onPressTag: (Tag, Boolean) -> Unit) {
+    fun bind(
+        tag: Tag,
+        createTag: () -> Unit,
+        onPressTag: (Tag, Boolean) -> Unit,
+        compareTags: (Tag) -> Boolean
+    ) {
         binding.cvTag.setCardBackgroundColor(
             ContextCompat.getColor(
                 binding.root.context,
@@ -30,6 +35,9 @@ class TagSelectorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
         binding.cbSelectTag.setOnCheckedChangeListener { _, checked->
             onPressTag(tag,checked)
+        }
+        if(compareTags(tag)){
+            binding.cbSelectTag.isChecked=true
         }
     }
 }

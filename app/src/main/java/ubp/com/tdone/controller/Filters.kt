@@ -11,5 +11,8 @@ object Filters {
         return tasks.find { task -> task.id == id }
     }
 
+    fun filterTagById(tasks: List<Task>, id: String): Task? {
+        return tasks.find { task -> task.id == id }
+    }
 
 }

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import ubp.com.tdone.R
-import ubp.com.tdone.controller.mediators.CreateNotesMediator
+import ubp.com.tdone.controller.mediators.ColorActivityMediator
 import ubp.com.tdone.databinding.FragmentSelectColorBinding
 import ubp.com.tdone.views.recyclerViews.creatingElements.ColorAdapter
 
@@ -16,7 +16,7 @@ class SelectColorFragment : Fragment() {
     private lateinit var binding: FragmentSelectColorBinding
 
     private lateinit var colorAdapter: ColorAdapter
-    private val mediator = CreateNotesMediator
+    private val mediator = ColorActivityMediator
 
     private var colorList: List<Int> = listOf()
     private var currentColor = R.color.white
@@ -35,7 +35,7 @@ class SelectColorFragment : Fragment() {
     }
 
     private fun initUI() {
-        colorList = mediator.colorSet
+        colorList = mediator.colorList
 
         colorAdapter = ColorAdapter(
             colorList,
