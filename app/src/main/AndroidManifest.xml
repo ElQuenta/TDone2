@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TDone"
         tools:targetApi="31">
         <activity
+            android:name=".views.UserSettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.CreateTagsActivity"
             android:exported="false" />
         <activity

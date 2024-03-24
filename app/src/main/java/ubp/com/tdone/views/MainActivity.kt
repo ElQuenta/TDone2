@@ -93,7 +93,8 @@ class MainActivity : AppCompatActivity() {
         binding.containerLayout.setOnClickListener { hideFabs() }
         binding.navView.getHeaderView(0).findViewById<ImageButton>(R.id.btn_nav_configurations)
             .setOnClickListener {
-
+                val intent = Intent(this,UserSettingsActivity::class.java)
+                startActivity(intent)
             }
     }
 
