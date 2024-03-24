@@ -25,7 +25,7 @@ class SelectTagsFragment : Fragment() {
 
 
     private var tagList: MutableList<Tag> =
-        mutableListOf(Tag(id = NEW_TAG_ID, name = "Crear Tag", color = R.color.black,userID = "userExample"))
+        mutableListOf(Tag(id = NEW_TAG_ID, name = "Crear Tag", color = R.color.black,userId = "userExample"))
     private var currentTags: MutableList<Tag> = mutableListOf()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

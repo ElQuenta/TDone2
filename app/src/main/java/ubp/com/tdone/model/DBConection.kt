@@ -2,6 +2,7 @@ package ubp.com.tdone.model
 
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
+import ubp.com.tdone.model.dataclases.Cover
 import ubp.com.tdone.model.dataclases.Note
 import ubp.com.tdone.model.dataclases.Tag
 import ubp.com.tdone.model.dataclases.Task
@@ -90,5 +91,17 @@ object DBConection {
         db.collection("tags").document(tagId).delete().await()
     }
 
+    suspend fun createCover(cover: Cover): String? {
+        return db.collection("covers").add(cover).continueWith {
+            it.result?.id
+        }.await()
+    }
 
+    suspend fun getCover(coverId: String): Task? {
+        return db.collection("covers")
+            .document(coverId)
+            .get()
+            .await()
+            .toObject(Task::class.java)
+    }
 }

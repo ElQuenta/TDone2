@@ -39,10 +39,10 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_selected_tags"
-                android:layout_marginTop="4dp"
-                android:layout_marginHorizontal="8dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="4dp" />
 
             <Toolbar
                 android:layout_width="match_parent"
@@ -81,9 +81,10 @@
                 android:id="@+id/et_task_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:layout_marginBottom="32dp"
                 android:hint="Descripción"
-                android:textSize="12sp"/>
+                android:inputType="textMultiLine"
+                android:textSize="16sp" />
 
         </LinearLayout>
 

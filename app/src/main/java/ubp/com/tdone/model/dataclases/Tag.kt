@@ -5,7 +5,7 @@ import com.google.firebase.firestore.DocumentId
 data class Tag(
     @DocumentId
     val id: String,
-    val userID : String,
+    val userId : String,
     val name: String,
     val color: Int
 )

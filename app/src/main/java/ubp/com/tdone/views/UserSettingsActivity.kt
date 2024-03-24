@@ -30,7 +30,7 @@ class UserSettingsActivity : AppCompatActivity() {
 
     private fun initUi() {
         binding.tvUserEmail.text = User.getCurrentUser()?.email ?: "Correo del Usuario"
-        binding.tvUserEmail.text = User.getCurrentUser()?.displayName ?: "Nombre de Usuario"
+        binding.tvUserName.text = User.getCurrentUser()?.displayName ?: "Nombre de Usuario"
     }
 
     private fun initListener() {

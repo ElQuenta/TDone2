@@ -7,7 +7,7 @@ import com.google.firebase.firestore.ServerTimestamp
 data class Note(
     @DocumentId
     val id: String,
-    val userID : String,
+    val userId : String,
     val title: String,
     val body: String? = null,
     val tags: List<Tag> = emptyList(),
