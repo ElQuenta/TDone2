@@ -42,6 +42,7 @@ android {
 dependencies {
 
     implementation(libs.firebase.firestore)
+    implementation(libs.firebase.auth)
     val navVersion = "2.7.0"
 
     //NavComponent

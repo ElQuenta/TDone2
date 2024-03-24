@@ -1,11 +1,13 @@
 package ubp.com.tdone.views.fragments.signFragments
 
+import User
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import ubp.com.tdone.R
 import ubp.com.tdone.databinding.FragmentSignInBinding
@@ -34,9 +36,23 @@ class SignInFragment : Fragment() {
             findNavController().navigate(R.id.action_signInFragment_to_singUpFragment)
         }
         binding.btnSingIn.setOnClickListener{
-            navToHome()
+            login()
         }
     }
+
+    private fun login() {
+        val email = binding.emailEt.text.toString()
+        val pass = binding.passET.text.toString()
+        if (verifyFields(email, pass)){
+            User.signInWithEmailAndPassword(email,pass,binding.root.context){
+                navToHome()
+            }
+        }else{
+            Toast.makeText(binding.root.context, "No deje espacios en Blanco", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun verifyFields(email:String,pass:String):Boolean = email.isNotEmpty()&&pass.isNotEmpty()
 
     private fun navToHome(){
         val intent = Intent(context, MainActivity::class.java)

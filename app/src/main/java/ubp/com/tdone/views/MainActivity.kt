@@ -1,5 +1,6 @@
 package ubp.com.tdone.views
 
+import User
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
@@ -11,6 +12,7 @@ import android.os.Looper
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -57,7 +59,9 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         val currentDestination = navController.currentDestination
         val homeDestination = navController.findDestination(R.id.homeFragment)
-        if (currentDestination != null && currentDestination == homeDestination) {
+        if (binding.drawerLayout.isOpen) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        } else if (currentDestination != null && currentDestination == homeDestination) {
             finishAffinity()
         } else {
             hideFabs()
@@ -93,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         binding.containerLayout.setOnClickListener { hideFabs() }
         binding.navView.getHeaderView(0).findViewById<ImageButton>(R.id.btn_nav_configurations)
             .setOnClickListener {
-                val intent = Intent(this,UserSettingsActivity::class.java)
+                val intent = Intent(this, UserSettingsActivity::class.java)
                 startActivity(intent)
             }
     }
@@ -106,6 +110,12 @@ class MainActivity : AppCompatActivity() {
 
         // Habilita la navegación mediante el NavController en el menú hamburguesa
         binding.navView.setupWithNavController(navController)
+
+        //poniendo la información del usuario
+        binding.navView.getHeaderView(0).findViewById<TextView>(R.id.tv_user_email).text =
+            User.getCurrentUser()?.email ?: "Correo del Usuario"
+        binding.navView.getHeaderView(0).findViewById<TextView>(R.id.tv_user_name).text =
+            User.getCurrentUser()?.displayName ?: "Nombre de usuario"
 
     }
 

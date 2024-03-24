@@ -1,5 +1,6 @@
 package ubp.com.tdone.views
 
+import User
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -28,7 +29,8 @@ class UserSettingsActivity : AppCompatActivity() {
     }
 
     private fun initUi() {
-
+        binding.tvUserEmail.text = User.getCurrentUser()?.email ?: "Correo del Usuario"
+        binding.tvUserEmail.text = User.getCurrentUser()?.displayName ?: "Nombre de Usuario"
     }
 
     private fun initListener() {
@@ -36,6 +38,7 @@ class UserSettingsActivity : AppCompatActivity() {
             onBackPressed()
         }
         binding.btnLogOut.setOnClickListener {
+            User.signOut()
             val intent = Intent(this,SignActivity::class.java)
             startActivity(intent)
         }
