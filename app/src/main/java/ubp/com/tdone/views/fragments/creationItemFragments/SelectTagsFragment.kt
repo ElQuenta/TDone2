@@ -1,5 +1,6 @@
 package ubp.com.tdone.views.fragments.creationItemFragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import ubp.com.tdone.controller.mediators.TagActivityMediator
 import ubp.com.tdone.databinding.FragmentSelectTagsBinding
 import ubp.com.tdone.model.dataclases.Tag
 import ubp.com.tdone.model.tagListExample
+import ubp.com.tdone.views.CreateTagsActivity
 import ubp.com.tdone.views.recyclerViews.creatingElements.TagSelectorAdapter
 
 class SelectTagsFragment : Fragment() {
@@ -61,7 +63,8 @@ class SelectTagsFragment : Fragment() {
     }
 
     private fun createNewTag() {
-
+        val intent = Intent(binding.root.context,CreateTagsActivity::class.java)
+        startActivity(intent)
     }
 
     companion object {

@@ -33,11 +33,11 @@ class TagSelectorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             binding.tvTagName.text
             binding.cvTag.layoutParams.width = dpToPixel(260)
         }
-        binding.cbSelectTag.setOnCheckedChangeListener { _, checked->
-            onPressTag(tag,checked)
-        }
         if(compareTags(tag)){
             binding.cbSelectTag.isChecked=true
+        }
+        binding.cbSelectTag.setOnCheckedChangeListener { _, checked->
+            onPressTag(tag,checked)
         }
     }
 }

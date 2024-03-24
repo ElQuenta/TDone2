@@ -10,6 +10,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -79,15 +80,21 @@ class MainActivity : AppCompatActivity() {
         }
         binding.fabAddNote.setOnClickListener {
             Toast.makeText(this, "nueva nota", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this,CreateNoteActivity::class.java)
+            val intent = Intent(this, CreateNoteActivity::class.java)
+            hideFabs()
             startActivity(intent)
         }
         binding.fabAddTask.setOnClickListener {
             Toast.makeText(this, "nueva tarea", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this,CreateTaskActivity::class.java)
+            val intent = Intent(this, CreateTaskActivity::class.java)
+            hideFabs()
             startActivity(intent)
         }
         binding.containerLayout.setOnClickListener { hideFabs() }
+        binding.navView.getHeaderView(0).findViewById<ImageButton>(R.id.btn_nav_configurations)
+            .setOnClickListener {
+
+            }
     }
 
     private fun initUI() {
