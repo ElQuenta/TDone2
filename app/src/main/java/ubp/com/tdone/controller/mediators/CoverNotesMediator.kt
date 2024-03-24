@@ -1,6 +1,5 @@
 package ubp.com.tdone.controller.mediators
 
-import android.app.Activity
 import ubp.com.tdone.model.dataclases.Cover
 import ubp.com.tdone.views.CreateNoteActivity
 
@@ -8,8 +7,8 @@ object CoverNotesMediator {
 
     lateinit var createNoteActivity: CreateNoteActivity
 
-    fun setActivity(activity: Activity) {
-        createNoteActivity = activity as CreateNoteActivity
+    fun setActivity(activity: CreateNoteActivity) {
+        createNoteActivity = activity
     }
 
     fun setCurrentCover(cover: Cover?) {

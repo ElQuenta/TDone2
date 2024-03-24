@@ -84,7 +84,8 @@ class MainActivity : AppCompatActivity() {
         }
         binding.fabAddTask.setOnClickListener {
             Toast.makeText(this, "nueva tarea", Toast.LENGTH_SHORT).show()
-
+            val intent = Intent(this,CreateTaskActivity::class.java)
+            startActivity(intent)
         }
         binding.containerLayout.setOnClickListener { hideFabs() }
     }

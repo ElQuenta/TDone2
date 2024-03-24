@@ -25,6 +25,8 @@ object TagActivityMediator : CreationMediator {
         this.tagList=tagList
         if (isNoteCreator){
             noteCreator.updateTagList(tagList)
+        }else{
+            taskCreator.updateTagList(tagList)
         }
     }
 

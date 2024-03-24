@@ -70,6 +70,7 @@ class CreateNoteActivity : AppCompatActivity() {
 
     private fun initListeners() {
         binding.toolbar.setNavigationOnClickListener {
+            mediatorTag.tagList= mutableListOf()
             this.finish()
         }
         binding.efabAddCover.setOnClickListener {
@@ -93,6 +94,7 @@ class CreateNoteActivity : AppCompatActivity() {
             binding.navHostFragment.visibility = View.GONE
             showingFragments= false
         }else {
+            mediatorTag.tagList= mutableListOf()
             this.finish()
         }
     }
