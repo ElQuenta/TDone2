@@ -12,6 +12,7 @@ public val noteListExample: List<Note>
     get() = listOf(
         Note(
             id = "nota1",
+            userID = "userExample",
             title = "nota 1",
             body = "Finalizar el informe de ventas para el trimestre.\n" +
                     "Preparar la presentación para la reunión del cliente el viernes.\n" +
@@ -23,6 +24,7 @@ public val noteListExample: List<Note>
         ),
         Note(
             id = "nota2",
+            userID = "userExample",
             title = "nota 2",
             body = "Finalizar el informe de ventas para el trimestre.\n" +
                     "Preparar la presentación para la reunión del cliente el viernes.\n" +
@@ -36,6 +38,7 @@ public val noteListExample: List<Note>
         ),
         Note(
             id = "nota3",
+            userID = "userExample",
             title = "nota 3",
             body = "Durante la sesión de lluvia de ideas, se propusieron varias ideas creativas para mejorar la experiencia del usuario en nuestra aplicación móvil. Algunos de los conceptos incluyen la implementación de un nuevo sistema de navegación y la introducción de características de gamificación para aumentar la participación del usuario.",
             createdAt = Timestamp.now(),
@@ -48,6 +51,7 @@ public val noteListExample: List<Note>
         ),
         Note(
             id = "nota4",
+            userID = "userExample",
             title = "nota 4",
             body = "Discutimos los requisitos del proyecto y confirmamos los plazos.\n" +
                     "Se acordaron las próximas etapas y se asignaron responsabilidades.\n" +
@@ -59,6 +63,7 @@ public val noteListExample: List<Note>
         ),
         Note(
             id = "nota5",
+            userID = "userExample",
             title = "nota 5",
             body = "Durante la revisión de rendimiento trimestral, se identificaron áreas de mejora para el equipo de ventas, como la necesidad de mejorar la tasa de conversión y la calidad de las interacciones con los clientes. Se acordó proporcionar capacitación adicional y establecer metas claras para el próximo trimestre.",
             createdAt = Timestamp.now(),
@@ -71,6 +76,7 @@ public val noteListExample: List<Note>
         ),
         Note(
             id = "nota6",
+            userID = "userExample",
             title = "nota 6",
             body = "Resumen de la llamada con el cliente:\n" +
                     "\n" +
@@ -87,6 +93,7 @@ public val noteListExample: List<Note>
         ),
         Note(
             id = "nota7",
+            userID = "userExample",
             title = "nota 7",
             body = "Acciones a seguir:\n" +
                     "\n" +
@@ -103,6 +110,7 @@ public val noteListExample: List<Note>
         ),
         Note(
             id = "nota8",
+            userID = "userExample",
             title = "nota 8",
             body = "El cliente expresó su satisfacción con la implementación de las nuevas características en la aplicación y sugirió algunas mejoras adicionales, como la integración con plataformas de redes sociales y la optimización del rendimiento. Se comprometió a seguir proporcionando comentarios para ayudar a mejorar aún más el producto.",
             createdAt = Timestamp.now(),
@@ -120,6 +128,7 @@ public val taskListExample: List<Task>
     get() = listOf(
         Task(
             id = "tarea_1",
+            userID = "userExample",
             title = "Tarea nro1",
             description = "esta es una tarea de prueba",
             endDate = GregorianCalendar(2023, 2, 22).time,
@@ -129,6 +138,7 @@ public val taskListExample: List<Task>
         ),
         Task(
             id = "tarea_2",
+            userID = "userExample",
             title = "Tarea nro2",
             description = "esta es una tarea de prueba",
             endDate = GregorianCalendar(2023, 2, 22).time,
@@ -141,6 +151,7 @@ public val taskListExample: List<Task>
         ),
         Task(
             id = "tarea_3",
+            userID = "userExample",
             title = "Tarea nro3",
             description = "esta es una tarea de prueba",
             endDate = GregorianCalendar(2023, 2, 22).time,
@@ -152,6 +163,7 @@ public val taskListExample: List<Task>
         ),
         Task(
             id = "tarea_4",
+            userID = "userExample",
             title = "Tarea nro4",
             description = "esta es una tarea de prueba",
             endDate = GregorianCalendar(2023, 2, 22).time,
@@ -162,6 +174,7 @@ public val taskListExample: List<Task>
         ),
         Task(
             id = "tarea_5",
+            userID = "userExample",
             title = "Tarea nro5",
             description = "esta es una tarea de prueba",
             endDate = GregorianCalendar(2023, 2, 22).time,
@@ -172,12 +185,14 @@ public val taskListExample: List<Task>
         ),
         Task(
             id = "tarea_6",
+            userID = "userExample",
             title = "Tarea nro6",
             description = "esta es una tarea de prueba",
             endDate = GregorianCalendar(2023, 2, 22).time,
         ),
         Task(
             id = "tarea_7",
+            userID = "userExample",
             title = "Tarea nro7",
             description = "esta es una tarea de prueba",
             endDate = GregorianCalendar(2023, 2, 22).time,
@@ -192,10 +207,10 @@ public val taskListExample: List<Task>
         )
 
 val tagListExample: List<Tag> = listOf(
-    Tag(id="tag1",name = "Importante", color = R.color.color_tag_1),
-    Tag(id="tag2",name = "Urgente", color = R.color.color_tag_2),
-    Tag(id="tag3",name = "Meh", color = R.color.color_tag_3),
-    Tag(id="tag4",name = "Trivial", color = R.color.color_tag_4),
+    Tag(id = "tag1", name = "Importante", color = R.color.color_tag_1, userID = "userExample"),
+    Tag(id = "tag2", name = "Urgente", color = R.color.color_tag_2, userID = "userExample"),
+    Tag(id = "tag3", name = "Meh", color = R.color.color_tag_3, userID = "userExample"),
+    Tag(id = "tag4", name = "Trivial", color = R.color.color_tag_4, userID = "userExample"),
 )
 
 private val coverListExample: List<Cover> = listOf(

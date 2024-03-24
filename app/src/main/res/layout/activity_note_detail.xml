@@ -31,7 +31,8 @@
                 android:id="@+id/iv_frontNote"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:scaleType="centerCrop"/>
 
             <TextView
                 android:id="@+id/tv_note_tittle"
