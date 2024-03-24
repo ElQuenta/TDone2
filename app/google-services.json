@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "977373268073",
+    "project_id": "tdone-f8641",
+    "storage_bucket": "tdone-f8641.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977373268073:android:1b9d1e12437282a77e3af8",
+        "android_client_info": {
+          "package_name": "ubp.com.tdone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw71wmlTRTaBWTjfAphlHQOrmOanHqw6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
