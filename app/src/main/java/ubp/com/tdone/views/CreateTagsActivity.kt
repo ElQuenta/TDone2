@@ -1,13 +1,20 @@
 package ubp.com.tdone.views
 
+import User
+import java.util.UUID;
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ubp.com.tdone.R
 import ubp.com.tdone.controller.mediators.ColorActivityMediator
 import ubp.com.tdone.databinding.ActivityCreateTagsBinding
+import ubp.com.tdone.model.DBConection
+import ubp.com.tdone.model.dataclases.Tag
 
 class CreateTagsActivity : AppCompatActivity() {
 
@@ -46,7 +53,23 @@ class CreateTagsActivity : AppCompatActivity() {
 
     private fun initListeners() {
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
+            this.finish()
+        }
+        binding.bntCrearItem.setOnClickListener {
+            val name = binding.etTaskTitle.text.toString()
+            if (name.isNotEmpty()){
+                val newTag = Tag(
+                    id = UUID.randomUUID().toString(),
+                    userId = User.getCurrentUser()!!.uid,
+                    name = name,
+                    color = currentColor
+                )
+                CoroutineScope(Dispatchers.IO).launch {
+                    DBConection.createTag(newTag)
+                }.invokeOnCompletion {
+                    this.finish()
+                }
+            }
         }
     }
 

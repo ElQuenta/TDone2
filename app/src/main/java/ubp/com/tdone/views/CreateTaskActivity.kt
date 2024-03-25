@@ -1,5 +1,6 @@
 package ubp.com.tdone.views
 
+import User
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
@@ -11,13 +12,20 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.Timestamp
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ubp.com.tdone.R
 import ubp.com.tdone.controller.mediators.DateActivityMediator
 import ubp.com.tdone.controller.mediators.TagActivityMediator
 import ubp.com.tdone.databinding.ActivityCreateTaskBinding
+import ubp.com.tdone.model.DBConection
 import ubp.com.tdone.model.dataclases.Tag
+import ubp.com.tdone.model.dataclases.Task
 import ubp.com.tdone.views.recyclerViews.showingElements.TagsAdapter
 import java.util.Date
+import java.util.UUID;
 
 class CreateTaskActivity : AppCompatActivity() {
 
@@ -69,6 +77,28 @@ class CreateTaskActivity : AppCompatActivity() {
         }
         binding.efabAddDate.setOnClickListener {
             changeCurrentFragment(R.id.selectDateFragment2)
+        }
+        binding.bntCrearItem.setOnClickListener {
+            val name = binding.etTaskTitle.text.toString()
+            val descripton = binding.etTaskBody.text.toString()
+            if (name.isNotEmpty()){
+                val newTask = Task(
+                    id = UUID.randomUUID().toString(),
+                    userId = User.getCurrentUser()!!.uid,
+                    title = name,
+                    description = descripton.ifEmpty { null },
+                    finished = false,
+                    endDate = date,
+                    tag = currentTags,
+                    createdAt = Timestamp.now(),
+                    updatedAt = Timestamp.now()
+                )
+                CoroutineScope(Dispatchers.IO).launch {
+                    DBConection.createTask(newTask)
+                }.invokeOnCompletion {
+                    this.finish()
+                }
+            }
         }
     }
 

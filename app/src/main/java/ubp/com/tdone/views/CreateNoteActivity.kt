@@ -1,5 +1,6 @@
 package ubp.com.tdone.views
 
+import User
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
@@ -13,14 +14,22 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.Timestamp
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import ubp.com.tdone.R
 import ubp.com.tdone.controller.mediators.ColorActivityMediator
 import ubp.com.tdone.controller.mediators.CoverNotesMediator
 import ubp.com.tdone.controller.mediators.TagActivityMediator
 import ubp.com.tdone.databinding.ActivityCreateNoteBinding
+import ubp.com.tdone.model.DBConection
 import ubp.com.tdone.model.dataclases.Cover
+import ubp.com.tdone.model.dataclases.Note
 import ubp.com.tdone.model.dataclases.Tag
 import ubp.com.tdone.views.recyclerViews.showingElements.TagsAdapter
+import java.util.UUID;
 
 class CreateNoteActivity : AppCompatActivity() {
 
@@ -86,6 +95,30 @@ class CreateNoteActivity : AppCompatActivity() {
             }
             changeCurrentFragment(R.id.selectColorFragment)
         }
+        binding.bntCrearItem.setOnClickListener {
+            val title = binding.etNoteTitle.text.toString()
+            val body = binding.etNoteBody.text.toString()
+            if (title.isNotEmpty()) {
+                val newNote = Note(
+                    id = UUID.randomUUID().toString(),
+                    userId = User.getCurrentUser()!!.uid,
+                    title = title,
+                    body = body.ifEmpty { null },
+                    tags = currentTags,
+                    cover = currentCover,
+                    background = noteBackground,
+                    createdAt = Timestamp.now(),
+                    updatedAt = Timestamp.now()
+                )
+                CoroutineScope(Dispatchers.IO).launch {
+                    DBConection.createNote(newNote)
+                }.invokeOnCompletion {
+                    this.finish()
+                }
+            }
+        }
+
+
     }
 
     @SuppressLint("MissingSuperCall")
@@ -100,6 +133,7 @@ class CreateNoteActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
+
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         navController = navHostFragment.findNavController()
