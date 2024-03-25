@@ -8,7 +8,7 @@ import java.util.Date
 data class Task(
     @DocumentId
     val id: String,
-    val userId : String,
+    val userId: String,
     val title: String,
     val description: String? = null,
     val finished: Boolean = false,
@@ -18,4 +18,16 @@ data class Task(
     val createdAt: Timestamp? = null,
     @ServerTimestamp
     val updatedAt: Timestamp? = null
-)
+) {
+    constructor() : this(
+        id = "",
+        userId = "",
+        title = "",
+        description = "",
+        finished = false,
+        endDate = Date(),
+        tag = listOf(),
+        createdAt = Timestamp.now(),
+        updatedAt = Timestamp.now()
+    )
+}

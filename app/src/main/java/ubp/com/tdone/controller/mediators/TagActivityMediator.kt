@@ -29,5 +29,12 @@ object TagActivityMediator : CreationMediator {
             taskCreator.updateTagList(tagList)
         }
     }
+    fun closeOptions(){
+        if (isNoteCreator){
+            noteCreator.closeOption()
+        }else{
+            taskCreator.closeOption()
+        }
+    }
 
 }

@@ -1,6 +1,5 @@
 package ubp.com.tdone.views.fragments.creationItemFragments
 
-import User
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,12 +21,12 @@ class SelectCoverFragment : Fragment() {
 
     private val coverList: List<Cover>
         get() = listOf(
-            Cover(id = "", userId = User.getCurrentUser()?.uid ?: "noUser", src = R.drawable.background_no_image),
-            Cover(id = "", userId = User.getCurrentUser()?.uid ?: "noUser",src = R.drawable.background1),
-            Cover(id = "", userId = User.getCurrentUser()?.uid ?: "noUser",src = R.drawable.background2),
-            Cover(id = "", userId = User.getCurrentUser()?.uid ?: "noUser",src = R.drawable.background3),
-            Cover(id = "", userId = User.getCurrentUser()?.uid ?: "noUser",src = R.drawable.background4),
-            Cover(id = "", userId = User.getCurrentUser()?.uid ?: "noUser",src = R.drawable.background_galery),
+            Cover(src = R.drawable.background_no_image),
+            Cover(src = R.drawable.background1),
+            Cover(src = R.drawable.background2),
+            Cover(src = R.drawable.background3),
+            Cover(src = R.drawable.background4),
+            Cover(src = R.drawable.background_galery),
         )
     private var currentCover = coverList.first()
 
@@ -64,7 +63,7 @@ class SelectCoverFragment : Fragment() {
         coverAdapter.notifyItemChanged(coverList.indexOf(cover))
         if (cover != coverList.first()) {
             mediator.setCurrentCover(cover)
-        }else{
+        } else {
             mediator.setCurrentCover(null)
         }
     }

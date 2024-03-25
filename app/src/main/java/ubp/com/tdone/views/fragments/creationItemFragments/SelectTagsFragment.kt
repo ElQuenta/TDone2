@@ -1,15 +1,19 @@
 package ubp.com.tdone.views.fragments.creationItemFragments
 
+import User
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.launch
 import ubp.com.tdone.R
 import ubp.com.tdone.controller.mediators.TagActivityMediator
 import ubp.com.tdone.databinding.FragmentSelectTagsBinding
+import ubp.com.tdone.model.DBConection
 import ubp.com.tdone.model.dataclases.Tag
 import ubp.com.tdone.model.tagListExample
 import ubp.com.tdone.views.CreateTagsActivity
@@ -39,9 +43,10 @@ class SelectTagsFragment : Fragment() {
         return binding.root
     }
 
-    private fun initUI() {
+    private fun initUI() = lifecycleScope.launch{
+        val allTags = DBConection.getTagsForUser(User.getCurrentUser()!!.uid)
         currentTags = mediator.tagList
-        tagList = (tagListExample + tagList).toMutableList()
+        tagList = (allTags + tagList).toMutableList()
         tagSelectorAdapter = TagSelectorAdapter(
             tagList,
             { createNewTag() },
@@ -63,6 +68,7 @@ class SelectTagsFragment : Fragment() {
     }
 
     private fun createNewTag() {
+        mediator.closeOptions()
         val intent = Intent(binding.root.context,CreateTagsActivity::class.java)
         startActivity(intent)
     }

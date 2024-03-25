@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import ubp.com.tdone.controller.Filters
+import kotlinx.coroutines.launch
 import ubp.com.tdone.databinding.ActivityNoteDetailBinding
-import ubp.com.tdone.model.dataclases.Note
-import ubp.com.tdone.model.noteListExample
+import ubp.com.tdone.model.DBConection
 import ubp.com.tdone.views.MainActivity.Companion.KEY_NOTE
 import ubp.com.tdone.views.recyclerViews.showingElements.TagsAdapter
 
@@ -32,31 +32,30 @@ class NoteDetailActivity : AppCompatActivity() {
             insets
         }
         val noteId: String = intent.getStringExtra(KEY_NOTE) ?: ""
-        val note = Filters.filterNoteById(noteListExample, noteId)
-        if (note != null) {
-            initUI(note)
-        }
+        initUI(noteId)
         initListeners()
     }
 
     private fun initListeners() {
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
+            this.finish()
         }
     }
 
-    private fun initUI(note: Note) {
-        binding.tvNoteTittle.text = note.title
-        binding.tvNoteBody.text = note.body
-        if (note.cover != null) {
-            binding.ivFrontNote.visibility = View.VISIBLE
-            if (note.cover.srcImage && note.cover.src != null) {
+    private fun initUI(noteId: String) = lifecycleScope.launch{
+        val note = DBConection.getNote(noteId)
+        binding.tvNoteTittle.text = note?.title
+        binding.tvNoteBody.text = note?.body
+        if (note!!.cover != null) {
+            if (note.cover!!.srcImage && note.cover.src != null) {
+                binding.ivFrontNote.visibility = View.VISIBLE
                 binding.ivFrontNote.setImageResource(note.cover.src!!)
             } else if (note.cover.uri != null) {
+                binding.ivFrontNote.visibility = View.VISIBLE
                 binding.ivFrontNote.setImageURI(note.cover.uri)
             }
         }
-        binding.root.setBackgroundColor(ContextCompat.getColor(this, note.background))
+        binding.root.setBackgroundColor(ContextCompat.getColor(binding.root.context, note.background))
 
         tagsAdapter = TagsAdapter(note.tags)
         binding.rvSelectedTags.apply {

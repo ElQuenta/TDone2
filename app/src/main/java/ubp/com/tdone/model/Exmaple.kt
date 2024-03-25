@@ -215,14 +215,10 @@ val tagListExample: List<Tag> = listOf(
 
 private val coverListExample: List<Cover> = listOf(
     Cover(
-        id = "image1",
-        userId = "userExample",
         src = R.drawable.ic_launcher_foreground,
         srcImage = true
     ),
     Cover(
-        id = "image2",
-        userId = "userExample",
         src = R.drawable.ic_launcher_background,
         srcImage = true
     )

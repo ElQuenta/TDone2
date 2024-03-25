@@ -43,21 +43,21 @@ object DBConection {
         }.await()
     }
 
-    suspend fun getNotesForUser(userId: String): List<Task> {
+     suspend fun getNotesForUser(userId: String): List<Note> {
         return db.collection("notes")
             .whereEqualTo("userId", userId)
             .get()
             .await()
             .documents
-            .map { it.toObject(Task::class.java)!! }
+            .map { it.toObject(Note::class.java)!! }
     }
 
-    suspend fun getNote(noteId: String): Task? {
+    suspend fun getNote(noteId: String): Note? {
         return db.collection("notes")
             .document(noteId)
             .get()
             .await()
-            .toObject(Task::class.java)
+            .toObject(Note::class.java)
     }
 
     suspend fun deleteNote(noteId: String) {
@@ -70,38 +70,24 @@ object DBConection {
         }.await()
     }
 
-    suspend fun getTagsForUser(userId: String): List<Task> {
+    suspend fun getTagsForUser(userId: String): List<Tag> {
         return db.collection("tags")
             .whereEqualTo("userId", userId)
             .get()
             .await()
             .documents
-            .map { it.toObject(Task::class.java)!! }
+            .map { it.toObject(Tag::class.java)!! }
     }
 
-    suspend fun getTag(tagId: String): Task? {
+    suspend fun getTag(tagId: String): Tag? {
         return db.collection("tags")
             .document(tagId)
             .get()
             .await()
-            .toObject(Task::class.java)
+            .toObject(Tag::class.java)
     }
 
     suspend fun deleteTag(tagId: String) {
         db.collection("tags").document(tagId).delete().await()
-    }
-
-    suspend fun createCover(cover: Cover): String? {
-        return db.collection("covers").add(cover).continueWith {
-            it.result?.id
-        }.await()
-    }
-
-    suspend fun getCover(coverId: String): Task? {
-        return db.collection("covers")
-            .document(coverId)
-            .get()
-            .await()
-            .toObject(Task::class.java)
     }
 }

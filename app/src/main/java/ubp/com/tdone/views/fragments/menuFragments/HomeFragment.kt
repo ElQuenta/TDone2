@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.launch
 import ubp.com.tdone.controller.nav.NavNoteDetailCommand
 import ubp.com.tdone.controller.nav.NavTaskDetailCommand
 import ubp.com.tdone.controller.nav.Navigator
 import ubp.com.tdone.databinding.FragmentHomeBinding
+import ubp.com.tdone.model.DBConection
 import ubp.com.tdone.model.dataclases.Note
 import ubp.com.tdone.model.dataclases.Task
 import ubp.com.tdone.model.noteListExample
@@ -36,8 +39,11 @@ class HomeFragment : Fragment() {
         initUI()
     }
 
-    private fun initUI() {
-        notesAdapter = NotesAdapter(noteListExample.take(4)) {
+    private fun initUI()= lifecycleScope.launch{
+        val allNotes = DBConection.getNotesForUser(User.getCurrentUser()!!.uid)
+        val alltasks = DBConection.getTasksForUser(User.getCurrentUser()!!.uid)
+
+        notesAdapter = NotesAdapter(allNotes.take(4)) {
             navToNoteDetail(it)
         }
         binding.rvCurrentNotes.apply {
@@ -46,7 +52,7 @@ class HomeFragment : Fragment() {
             adapter = notesAdapter
         }
 
-        tasksAdapter = TasksAdapter(taskListExample) {
+        tasksAdapter = TasksAdapter(alltasks) {
             navToTaskDetail(it)
         }
         binding.rvNearToEndTasks.apply {

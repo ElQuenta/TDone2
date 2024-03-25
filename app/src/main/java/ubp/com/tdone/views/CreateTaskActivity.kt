@@ -119,4 +119,9 @@ class CreateTaskActivity : AppCompatActivity() {
         this.date = date
     }
 
+    fun closeOption(){
+        binding.navHostFragment.visibility = View.GONE
+        showingFragments = false
+    }
+
 }

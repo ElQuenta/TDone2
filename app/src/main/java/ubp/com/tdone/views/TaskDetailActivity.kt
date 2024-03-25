@@ -5,12 +5,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.launch
 import ubp.com.tdone.R
-import ubp.com.tdone.controller.Filters
 import ubp.com.tdone.databinding.ActivityTaskDetailBinding
-import ubp.com.tdone.model.dataclases.Task
-import ubp.com.tdone.model.taskListExample
+import ubp.com.tdone.model.DBConection
 import ubp.com.tdone.views.MainActivity.Companion.KEY_TASK
 import ubp.com.tdone.views.recyclerViews.showingElements.TagsAdapter
 
@@ -31,10 +31,7 @@ class TaskDetailActivity : AppCompatActivity() {
             insets
         }
         val taskId = intent.getStringExtra(KEY_TASK) ?: ""
-        val task = Filters.filterTaskById(taskListExample,taskId)
-        if (task!=null) {
-            initUI(task)
-        }
+        initUI(taskId)
         initListeners()
     }
 
@@ -44,8 +41,10 @@ class TaskDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun initUI(task: Task) {
-        tagsAdapter = TagsAdapter(task.tag)
+    private fun initUI(taskId: String)= lifecycleScope.launch{
+        val task = DBConection.getTask(taskId)
+
+        tagsAdapter = TagsAdapter(task!!.tag)
         binding.rvSelectedTags.apply {
             layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
             adapter = tagsAdapter

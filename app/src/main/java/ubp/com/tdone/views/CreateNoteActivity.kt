@@ -166,5 +166,10 @@ class CreateNoteActivity : AppCompatActivity() {
         }
     }
 
+    fun closeOption(){
+        binding.navHostFragment.visibility = View.GONE
+        showingFragments = false
+    }
+
 
 }
