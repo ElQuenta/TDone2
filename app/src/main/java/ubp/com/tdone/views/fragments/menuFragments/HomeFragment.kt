@@ -1,5 +1,6 @@
 package ubp.com.tdone.views.fragments.menuFragments
 
+import User
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +16,6 @@ import ubp.com.tdone.databinding.FragmentHomeBinding
 import ubp.com.tdone.model.DBConection
 import ubp.com.tdone.model.dataclases.Note
 import ubp.com.tdone.model.dataclases.Task
-import ubp.com.tdone.model.noteListExample
-import ubp.com.tdone.model.taskListExample
 import ubp.com.tdone.views.recyclerViews.showingElements.NotesAdapter
 import ubp.com.tdone.views.recyclerViews.showingElements.TasksAdapter
 
@@ -39,7 +38,7 @@ class HomeFragment : Fragment() {
         initUI()
     }
 
-    private fun initUI()= lifecycleScope.launch{
+    private fun initUI() = lifecycleScope.launch {
         val allNotes = DBConection.getNotesForUser(User.getCurrentUser()!!.uid)
         val alltasks = DBConection.getTasksForUser(User.getCurrentUser()!!.uid)
 
@@ -69,5 +68,6 @@ class HomeFragment : Fragment() {
     private fun navToTaskDetail(task: Task) {
         startActivity(NavTaskDetailCommand(task, Navigator(binding.root.context)).execute())
     }
+
 
 }

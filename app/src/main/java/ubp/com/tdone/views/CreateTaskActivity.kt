@@ -152,6 +152,7 @@ class CreateTaskActivity : AppCompatActivity() {
     fun closeOption(){
         binding.navHostFragment.visibility = View.GONE
         showingFragments = false
+        navController.navigate(R.id.selectDateFragment2)
     }
 
 }

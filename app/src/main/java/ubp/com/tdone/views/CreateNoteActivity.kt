@@ -3,7 +3,6 @@ package ubp.com.tdone.views
 import User
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.Timestamp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import ubp.com.tdone.R
 import ubp.com.tdone.controller.mediators.ColorActivityMediator
@@ -203,6 +201,7 @@ class CreateNoteActivity : AppCompatActivity() {
     fun closeOption(){
         binding.navHostFragment.visibility = View.GONE
         showingFragments = false
+        navController.navigate(R.id.selectCoverFragment)
     }
 
 

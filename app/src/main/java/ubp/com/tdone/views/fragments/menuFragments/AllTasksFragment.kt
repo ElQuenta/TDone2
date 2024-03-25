@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
 import ubp.com.tdone.controller.nav.NavTaskDetailCommand
 import ubp.com.tdone.controller.nav.Navigator
-import ubp.com.tdone.model.taskListExample
+import ubp.com.tdone.controller.observers.TagListObserver
 import ubp.com.tdone.databinding.FragmentAllTasksBinding
 import ubp.com.tdone.model.DBConection
 import ubp.com.tdone.model.dataclases.Task
 import ubp.com.tdone.views.recyclerViews.showingElements.TasksAdapter
 
-class AllTasksFragment : Fragment() {
+class AllTasksFragment : Fragment(){
 
     private lateinit var binding: FragmentAllTasksBinding
 

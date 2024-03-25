@@ -33,10 +33,6 @@ object DBConection {
             .toObject(Task::class.java)
     }
 
-    suspend fun deleteTask(taskId: String) {
-        db.collection("tasks").document(taskId).delete().await()
-    }
-
     suspend fun createNote(note: Note): String? {
         return db.collection("notes").add(note).continueWith {
             it.result?.id
@@ -60,10 +56,6 @@ object DBConection {
             .toObject(Note::class.java)
     }
 
-    suspend fun deleteNote(noteId: String) {
-        db.collection("notes").document(noteId).delete().await()
-    }
-
     suspend fun createTag(tag: Tag): String? {
         return db.collection("tags").add(tag).continueWith {
             it.result?.id
@@ -77,17 +69,5 @@ object DBConection {
             .await()
             .documents
             .map { it.toObject(Tag::class.java)!! }
-    }
-
-    suspend fun getTag(tagId: String): Tag? {
-        return db.collection("tags")
-            .document(tagId)
-            .get()
-            .await()
-            .toObject(Tag::class.java)
-    }
-
-    suspend fun deleteTag(tagId: String) {
-        db.collection("tags").document(tagId).delete().await()
     }
 }

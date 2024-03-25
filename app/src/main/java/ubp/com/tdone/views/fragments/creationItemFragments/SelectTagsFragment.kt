@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
 import ubp.com.tdone.R
 import ubp.com.tdone.controller.mediators.TagActivityMediator
+import ubp.com.tdone.controller.observers.TagListObserver
 import ubp.com.tdone.databinding.FragmentSelectTagsBinding
 import ubp.com.tdone.model.DBConection
 import ubp.com.tdone.model.dataclases.Tag
-import ubp.com.tdone.model.tagListExample
 import ubp.com.tdone.views.CreateTagsActivity
 import ubp.com.tdone.views.recyclerViews.creatingElements.TagSelectorAdapter
 
-class SelectTagsFragment : Fragment() {
+class SelectTagsFragment : Fragment(), TagListObserver {
 
     private lateinit var binding: FragmentSelectTagsBinding
 
@@ -34,6 +34,7 @@ class SelectTagsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
+        mediator.registerTagListObserver(this)
     }
 
     override fun onCreateView(
@@ -75,6 +76,10 @@ class SelectTagsFragment : Fragment() {
 
     companion object {
         const val NEW_TAG_ID = "newTag"
+    }
+
+    override fun onTagListUpdated() {
+        tagSelectorAdapter.notifyDataSetChanged()
     }
 
 

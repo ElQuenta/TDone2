@@ -12,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ubp.com.tdone.R
 import ubp.com.tdone.controller.mediators.ColorActivityMediator
+import ubp.com.tdone.controller.mediators.TagActivityMediator
 import ubp.com.tdone.databinding.ActivityCreateTagsBinding
 import ubp.com.tdone.model.DBConection
 import ubp.com.tdone.model.dataclases.Tag
@@ -21,6 +22,7 @@ class CreateTagsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateTagsBinding
 
     private val mediator = ColorActivityMediator
+    private val mediatorTag = TagActivityMediator
     private var currentColor = R.color.white
     private val colorList = listOf(
         R.color.color_tag_1,
@@ -67,6 +69,7 @@ class CreateTagsActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.IO).launch {
                     DBConection.createTag(newTag)
                 }.invokeOnCompletion {
+                    mediatorTag.notifyTagListUpdated()
                     this.finish()
                 }
             }
@@ -81,5 +84,6 @@ class CreateTagsActivity : AppCompatActivity() {
     fun updateColor(color:Int){
         currentColor = color
     }
+
 
 }

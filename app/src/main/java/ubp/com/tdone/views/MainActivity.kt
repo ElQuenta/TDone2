@@ -103,6 +103,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
+
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         navController = navHostFragment.findNavController()
@@ -163,4 +164,8 @@ class MainActivity : AppCompatActivity() {
 
         animator.start()
     }
+    /*
+    disimularTransiciones
+     */
+
 }
